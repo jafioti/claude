@@ -17,7 +17,9 @@ async fn main() {
         if let Some('\r') = s.chars().next_back() {
             s.pop();
         }
-        let mut request = MessagesRequest::default().with_stream(true);
+        let mut request = MessagesRequest::default()
+            .with_stream(true)
+            .with_model("claude-3-5-sonnet-20240620");
         request.add_user(Content::text(s));
 
         let mut stream = client
